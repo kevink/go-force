@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/nimajalali/go-force/forcejson"
+	"github.com/kevink/go-force/forcejson"
 )
 
 const (
@@ -84,6 +84,7 @@ func (forceApi *ForceApi) request(method, path string, params url.Values, payloa
 	req.Header.Set("Content-Type", contentType)
 	req.Header.Set("Accept", responseType)
 	req.Header.Set("Authorization", fmt.Sprintf("%v %v", "Bearer", forceApi.oauth.AccessToken))
+	req.Header.Set("Accept-Language", "en-US")
 
 	// Send
 	forceApi.traceRequest(req)
